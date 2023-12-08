@@ -9,12 +9,12 @@ export function valorDado() { // Gera um valor de 1 a 6 para o dado
     return Math.floor(Math.random() * 6) + 1;
 }
 
-export function setDado() 
+export function SetDadoP1() //Altera o valor de dado
 {
     Dado = valorDado();
 }
 
-export function getDado()
+export function GetDadoP1() // Pega o valor de dado para main
 {
     return Dado;
 }
