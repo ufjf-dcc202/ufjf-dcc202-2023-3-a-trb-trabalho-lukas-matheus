@@ -6,6 +6,15 @@ body {
     
 }
 
+#Reiniciar {
+    position: absolute;
+    display: flex;
+    flex: 0;
+    margin-top: 80px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
 hr {
     width: 200px;
 }
@@ -44,7 +53,6 @@ h4 {
     text-align:left;
     font-size: 10px;
 }
-
 
 
 .Tabuleiro {
@@ -140,7 +148,6 @@ h4 {
 .nselec {
     background-color: rgb(125, 177, 165)
 }
-
 
 .Somatorio {
     width: 100px;
