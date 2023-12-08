@@ -1,12 +1,15 @@
 //main.js
 
-import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio, SetDadoP1, GetDadoP1, SColuna1P1, SColuna2P1, SColuna3P1, SColuna1P2, SColuna2P2, SColuna3P2 } from "./funções.js";
-import { GetDadoP1, SetDadoP1 } from "./funções.js";
+import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio} from "./funções.js";
+import { GetDadoP1, SetDadoP1, SColuna1P1, SColuna2P1, SColuna3P1, SColuna1P2, SColuna2P2, SColuna3P2 } from "./funções.js";
 
 let numSelec = null;
 const MatP1 = document.querySelectorAll('button[id^=M1]');
 const MatP2 = document.querySelectorAll('button[id^=M2]');
+const V1 = document.querySelector("#pts1");
+const V2 = document.querySelector("#pts2");
 
+Somatorios();
 Player1();
 
 function Player1() {
@@ -35,6 +38,7 @@ function SelecNum() { //Só para adicionar estilo ao clicar no botão do dado
 }
 
 function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
+    Somatorios();
     for (let i = 0; i < 3; i += 1) {
         for (let j = 0; j < 3; j += 1) {
             MatP1[i * 3 + j].addEventListener("click", function () { //Aqui eu uso essa expressão para passar os valores de i e j de forma linear no vetor
@@ -51,6 +55,7 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
                         }
                     }
                     celSelec.textContent = GetDadoP1();
+                    Somatorios();
                     AlteraRodada();
                     Player2();
                 }
@@ -75,6 +80,7 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
         }
     }
     MatP2[i * 3 + j].textContent = valor;
+    Somatorios();
     AlteraRodada();
     Player1();
 }
@@ -96,4 +102,10 @@ function Somatorios() // Soma os Pontos
     C2P1.textContent = SColuna1P2();
     C2P2.textContent = SColuna2P2();
     C2P3.textContent = SColuna3P2();
+
+    let SomaP1 = SColuna1P1() + SColuna2P1() + SColuna3P1();
+    let SomaP2 = SColuna1P2() + SColuna2P2() + SColuna3P2();
+
+    V1.textContent = SomaP1;
+    V2.textContent = SomaP2;    
 }
