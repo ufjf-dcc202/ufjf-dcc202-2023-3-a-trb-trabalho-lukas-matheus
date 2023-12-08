@@ -1,38 +1,38 @@
 //main.js
 
-import { valorDado, RodadaDeQuem, AlteraRodada } from "./funções.js";
+import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio } from "./funções.js";
+import { } from "./funções.js";
 
 let numSelec = null;
+const MatP1 = document.querySelectorAll('button[id^=M1]');
+const MatP2 = document.querySelectorAll('button[id^=M2]');
 
 Player1();
 
-function Player1()
-{
-    if(RodadaDeQuem()) // Se verdadeiro, Player 1 que joga;
-    {   
+function Player1() {
+    if (RodadaDeQuem()) // Se verdadeiro, Player 1 que joga;
+    {
         const dadoP1 = document.querySelector("#dadosP1");
         let DadoP1 = valorDado();
         dadoP1.textContent = DadoP1;
         dadoP1.classList.add("numeros");
         dadoP1.addEventListener("click", SelecNum);
         SelecCelP1();
-
     }
 }
 
-function Player2()
-{
-    if(!RodadaDeQuem()) //Se Falso, Player 2 que Joga
-    {   
+function Player2() {
+    if (!RodadaDeQuem()) //Se Falso, Player 2 que Joga
+    {
         const dadoP2 = document.querySelector("#dadosP2");
         let DadoP2 = valorDado();
         dadoP2.textContent = DadoP2;
         dadoP2.classList.add("numeros");
+        SelecCelP2(DadoP2);
     }
 }
 
-function SelecNum() //Só para adicionar estilo ao clicar no botão do dado
-{
+function SelecNum() { //Só para adicionar estilo ao clicar no botão do dado
     numSelec = this;
     numSelec.classList.add("nselec");
 }
@@ -62,3 +62,22 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
     }
 }
 
+function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot jogar sozinho
+    let i = BotAleatorio();
+    let j = BotAleatorio();
+    while (!MP2PosVazia(i, j)) {
+        i = BotAleatorio();
+        j = BotAleatorio();
+    }
+    AtribuiMatrizP2(i, j, valor);
+    for (let i = 0; i < 3; i += 1) {
+        for (let j = 0; j < 3; j += 1) {
+            if (MP1PosVazia(i, j)) {
+                MatP1[i * 3 + j].textContent = '';
+            }
+        }
+    }
+    MatP2[i * 3 + j].textContent = valor;
+    AlteraRodada();
+    Player1();
+}
