@@ -10,6 +10,41 @@ hr {
     width: 200px;
 }
 
+h2 {
+    position: absolute;
+    font-family: monospace;
+    text-align:left;
+    font-size: 15px
+    
+}
+
+h3 {
+    position: absolute;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    font-family: monospace;
+    text-align:left;
+    float: left;
+    font-size: 10px;
+}
+#pts1 {
+    margin-left: 60px;
+}
+
+#pts2 {
+    margin-left: 60px;
+}
+
+
+h4 {
+    position: absolute;
+    margin-top: 60px;
+    font-family: monospace;
+    text-align:left;
+    font-size: 10px;
+}
+
 
 
 .Tabuleiro {
