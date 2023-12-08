@@ -15,6 +15,7 @@ function Player1()
         dadoP1.textContent = DadoP1;
         dadoP1.classList.add("numeros");
         dadoP1.addEventListener("click", );
+        SelecCelP1();
     }
 }
 
@@ -27,5 +28,30 @@ function Player2()
         dadoP2.textContent = DadoP2;
         dadoP2.classList.add("numeros");
         dadoP2.addEventListener("click", );
+    }
+}
+
+function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
+    for (let i = 0; i < 3; i += 1) {
+        for (let j = 0; j < 3; j += 1) {
+            MatP1[i * 3 + j].addEventListener("click", function () { //Aqui eu uso essa expressão para passar os valores de i e j de forma linear no vetor
+                let celSelec = this;
+                if (celSelec.textContent === '' && numSelec !== null) {
+                    AtribuiMatrizP1(i, j, GetDadoP1());
+                    numSelec.classList.remove("nselec");
+                    numSelec = null;
+                    for (let i = 0; i < 3; i += 1) {
+                        for (let j = 0; j < 3; j += 1) {
+                            if (MP2PosVazia(i, j)) {
+                                MatP2[i * 3 + j].textContent = '';
+                            }
+                        }
+                    }
+                    celSelec.textContent = GetDadoP1();
+                    AlteraRodada();
+                    Player2();
+                }
+            });
+        }
     }
 }
