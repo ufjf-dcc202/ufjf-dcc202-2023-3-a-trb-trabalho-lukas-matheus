@@ -48,3 +48,37 @@ export function MP2PosVazia()
         return false;
     }
 }
+
+export function AtribuiMatrizP1(i , j, valor)
+{
+    MatrizP1[i][j] = valor;
+    if (MatrizP1[i][j] !== 0 && MatrizP1[i][j] === MatrizP2[0][j])
+    {
+        MatrizP2[0][j] = 0;
+    }
+    if (MatrizP1[i][j] !== 0 && MatrizP1[i][j] === MatrizP2[1][j])
+    {
+        MatrizP2[1][j] = 0;
+    }
+    if (MatrizP1[i][j] !== 0 && MatrizP1[i][j] === MatrizP2[2][j])
+    {
+        MatrizP2[2][j] = 0;
+    }
+}
+
+export function AtribuiMatrizP2(i , j, valor)
+{
+    MatrizP2[i][j] = valor;
+    if (MatrizP2[i][j] !== 0 && MatrizP2[i][j] === MatrizP1[0][j])
+    {
+        MatrizP1[0][j] = 0;
+    }
+    if (MatrizP2[i][j] !== 0 && MatrizP2[i][j] === MatrizP1[1][j])
+    {
+        MatrizP1[1][j] = 0;
+    }
+    if (MatrizP2[i][j] !== 0 && MatrizP2[i][j] === MatrizP1[2][j])
+    {
+        MatrizP1[2][j] = 0;
+    }
+}
