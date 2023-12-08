@@ -1,7 +1,7 @@
 //main.js
 
 import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio, SetDadoP1, GetDadoP1 } from "./funções.js";
-import { } from "./funções.js";
+import { GetDadoP1, SetDadoP1 } from "./funções.js";
 
 let numSelec = null;
 const MatP1 = document.querySelectorAll('button[id^=M1]');
@@ -10,9 +10,8 @@ const MatP2 = document.querySelectorAll('button[id^=M2]');
 Player1();
 
 function Player1() {
-    if (RodadaDeQuem()) // Se verdadeiro, Player 1 que joga;
-    {
-        const dadoP1 = document.querySelector("#dadosP1");
+    if (RodadaDeQuem()) { //Se verdadeiro, player1 joga
+        const dadoP1 = document.querySelector("#dadoP1");
         SetDadoP1();
         dadoP1.textContent = GetDadoP1();
         dadoP1.classList.add("numeros");
@@ -20,11 +19,9 @@ function Player1() {
         SelecCelP1();
     }
 }
-
 function Player2() {
-    if (!RodadaDeQuem()) //Se Falso, Player 2 que Joga
-    {
-        const dadoP2 = document.querySelector("#dadosP2");
+    if (!RodadaDeQuem()) { //Se Rodada for falso, Player2 joga
+        const dadoP2 = document.querySelector("#dadoP2");
         let DadoP2 = valorDado();
         dadoP2.textContent = DadoP2;
         dadoP2.classList.add("numeros");
