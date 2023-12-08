@@ -1,20 +1,20 @@
 //main.js
 
-import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio} from "./funções.js";
-import { GetDadoP1, SetDadoP1, SColuna1P1, SColuna2P1, SColuna3P1, SColuna1P2, SColuna2P2, SColuna3P2 } from "./funções.js";
+import { MP1PosVazia, MP2PosVazia, Reinicia, GameOver, AtribuiMatrizP1, SColuna3P2, SColuna2P2, SColuna1P2, SColuna3P1, SColuna2P1, SColuna1P1, valorDado, RodadaDeQuem, AlteraRodada, BotAleatorio, AtribuiMatrizP2, GetDadoP1, SetDadoP1 } from "./funções.js";
+//Estava tendo problemas com a importação
+
 
 let numSelec = null;
-const MatP1 = document.querySelectorAll('button[id^=M1]');
+const MatP1 = document.querySelectorAll('button[id^=M1]'); //Selecionar todos os botões cujo id começa com "M1" e "M2"
 const MatP2 = document.querySelectorAll('button[id^=M2]');
-const V1 = document.querySelector("#pts1");
-const V2 = document.querySelector("#pts2");
 
 Somatorios();
 Player1();
 
 function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
-    let restart = document.querySelector("#Reiniciar");
+
     if (GameOver()) {
+        const restart = document.querySelector("#Reiniciar");
         restart.addEventListener("click", function () {
             Reinicia();
             for (let i = 0; i < 3; i += 1) {
@@ -73,6 +73,7 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
                         }
                     }
                     celSelec.textContent = GetDadoP1();
+                    Ganhador();
                     Somatorios();
                     AlteraRodada();
                     Player2();
@@ -98,6 +99,7 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
         }
     }
     MatP2[i * 3 + j].textContent = valor;
+    Ganhador();
     Somatorios();
     AlteraRodada();
     Player1();
@@ -105,6 +107,9 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
 
 function Somatorios() // Soma os Pontos
 {
+    const V1 = document.querySelector("#pts1");
+    const V2 = document.querySelector("#pts2");
+
     let C1P1 = document.querySelector("#P1L1");
     let C1P2 = document.querySelector("#P1L2");
     let C1P3 = document.querySelector("#P1L3");
@@ -125,5 +130,5 @@ function Somatorios() // Soma os Pontos
     let SomaP2 = SColuna1P2() + SColuna2P2() + SColuna3P2();
 
     V1.textContent = SomaP1;
-    V2.textContent = SomaP2;    
+    V2.textContent = SomaP2;
 }
