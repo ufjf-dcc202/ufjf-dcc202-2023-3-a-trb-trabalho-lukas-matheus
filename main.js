@@ -14,7 +14,7 @@ function Player1()
         let DadoP1 = valorDado();
         dadoP1.textContent = DadoP1;
         dadoP1.classList.add("numeros");
-        dadoP1.addEventListener("click", );
+        dadoP1.addEventListener("click", SelecNum);
     }
 }
 
@@ -26,6 +26,11 @@ function Player2()
         let DadoP2 = valorDado();
         dadoP2.textContent = DadoP2;
         dadoP2.classList.add("numeros");
-        dadoP2.addEventListener("click", );
     }
+}
+
+function SelecNum()
+{
+    numSelec = this;
+    numSelec.classList.add("nselec");
 }
