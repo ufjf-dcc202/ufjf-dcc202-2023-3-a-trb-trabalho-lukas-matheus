@@ -9,6 +9,16 @@ export function valorDado() { // Gera um valor de 1 a 6 para o dado
     return Math.floor(Math.random() * 6) + 1;
 }
 
+export function setDado() 
+{
+    Dado = valorDado();
+}
+
+export function getDado()
+{
+    return Dado;
+}
+
 export function RodadaDeQuem() {
     return Rodada;
 }
