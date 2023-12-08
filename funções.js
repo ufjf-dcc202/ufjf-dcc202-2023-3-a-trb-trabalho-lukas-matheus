@@ -28,3 +28,23 @@ export function AlteraRodada() //Passa do Player1 para o Player2 e vice versa
 export function BotAleatorio() {
     return Math.floor(Math.random() * 3);
 }
+
+export function MP1PosVazia()
+{
+    if(MatrizP1[i][j] === 0)
+    {
+        return true;
+    } else{
+        return false;
+    }
+}
+
+export function MP2PosVazia()
+{
+    if(MatrizP2[i][j] === 0)
+    {
+        return true;
+    } else{
+        return false;
+    }
+}
