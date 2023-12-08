@@ -48,3 +48,58 @@ hr {
 #P2 button {
     background-color: rgb(219, 203, 203);
 }
+
+.Dados {
+    display: inline-block;
+    position:absolute;
+    top: 70%;
+    transform: translateX(-50%);
+ 
+}
+.AreaDado {
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    
+}
+#dadoP1 {
+    font-family: monospace;
+    border: 2px solid rgb(125, 177, 165);
+    position: absolute;
+    margin-left: -300px;
+    margin-top: 15px;
+}
+#dadoP2 {
+    border: 2px solid red;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: -280px;
+}
+
+.cel {
+    width: 67px;
+    height: 67px;
+    border: 1px solid gray;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.numeros {
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+}
+
+.nselec {
+    background-color: rgb(125, 177, 165)
+}

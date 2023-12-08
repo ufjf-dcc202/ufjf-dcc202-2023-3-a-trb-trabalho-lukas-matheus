@@ -14,12 +14,9 @@ function Player1()
         let DadoP1 = valorDado();
         dadoP1.textContent = DadoP1;
         dadoP1.classList.add("numeros");
-<<<<<<< HEAD
         dadoP1.addEventListener("click", SelecNum);
-=======
-        dadoP1.addEventListener("click", );
         SelecCelP1();
->>>>>>> 602aa9cf1ea5278aaa2214149e39c33082efc50b
+
     }
 }
 
@@ -34,13 +31,12 @@ function Player2()
     }
 }
 
-<<<<<<< HEAD
 function SelecNum()
 {
     numSelec = this;
     numSelec.classList.add("nselec");
 }
-=======
+
 function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
     for (let i = 0; i < 3; i += 1) {
         for (let j = 0; j < 3; j += 1) {
@@ -64,5 +60,5 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
             });
         }
     }
->>>>>>> 602aa9cf1ea5278aaa2214149e39c33082efc50b
+
 }
