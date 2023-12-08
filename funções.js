@@ -77,6 +77,41 @@ export function AtribuiMatrizP2(i, j, valor) {
     }
 }
 
+export function Reinicia() //Função para resetar o valor das matrizes
+{
+    for (let i = 0; i < 3; i += 1) {
+        for (let j = 0; j < 3; j += 1) {
+            MatrizP1[i][j] = 0;
+            MatrizP2[i][j] = 0;
+        }
+    }
+}
+
+export function GameOver() { //Função para verificar se as matrizes estão cheias de valores não nulos;
+    let cont1 = 0;
+    let cont2 = 0;
+    for (let i = 0; i < 3; i += 1) {
+        for (let j = 0; j < 3; j += 1) {
+            if (Rodada) {
+                if (MatrizP1[i][j] === 0) {
+                    cont1 += 1;
+                }
+            }
+            else {
+                if (MatrizP2[i][j] === 0) {
+                    cont2 += 1
+                }
+            }
+        }
+    }
+    if (cont1 === 0 || cont2 === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 export function SColuna1P1() { //Todas abaixo são para o somatório de pontos
     let Player1C1 = 0;
 
