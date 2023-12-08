@@ -1,6 +1,6 @@
 //main.js
 
-import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio, SetDadoP1, GetDadoP1 } from "./funções.js";
+import { valorDado, RodadaDeQuem, AlteraRodada, MP1PosVazia, MP2PosVazia, BotAleatorio, SetDadoP1, GetDadoP1, SColuna1P1, SColuna2P1, SColuna3P1, SColuna1P2, SColuna2P2, SColuna3P2 } from "./funções.js";
 import { GetDadoP1, SetDadoP1 } from "./funções.js";
 
 let numSelec = null;
@@ -77,4 +77,23 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
     MatP2[i * 3 + j].textContent = valor;
     AlteraRodada();
     Player1();
+}
+
+function Somatorios() // Soma os Pontos
+{
+    let C1P1 = document.querySelector("#P1L1");
+    let C1P2 = document.querySelector("#P1L2");
+    let C1P3 = document.querySelector("#P1L3");
+
+    let C2P1 = document.querySelector("#P2L1");
+    let C2P2 = document.querySelector("#P2L2");
+    let C2P3 = document.querySelector("#P2L3");
+
+    C1P1.textContent = SColuna1P1();
+    C1P2.textContent = SColuna2P1();
+    C1P3.textContent = SColuna3P1();
+
+    C2P1.textContent = SColuna1P2();
+    C2P2.textContent = SColuna2P2();
+    C2P3.textContent = SColuna3P2();
 }
