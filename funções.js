@@ -24,3 +24,7 @@ export function AlteraRodada() //Passa do Player1 para o Player2 e vice versa
         Rodada = true;
     }
 }
+
+export function BotAleatorio() {
+    return Math.floor(Math.random() * 3);
+}
