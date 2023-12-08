@@ -31,7 +31,7 @@ function Player2()
     }
 }
 
-function SelecNum()
+function SelecNum() //Só para adicionar estilo ao clicar no botão do dado
 {
     numSelec = this;
     numSelec.classList.add("nselec");
@@ -60,5 +60,5 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
             });
         }
     }
-
 }
+
