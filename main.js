@@ -8,7 +8,7 @@ Player1();
 
 function Player1()
 {
-    if(RodadaDeQuem())
+    if(RodadaDeQuem()) // Se verdadeiro, Player 1 que joga;
     {   
         const dadoP1 = document.querySelector("#dadosP1");
         let DadoP1 = valorDado();
@@ -20,7 +20,7 @@ function Player1()
 
 function Player2()
 {
-    if(!RodadaDeQuem())
+    if(!RodadaDeQuem()) //Se Falso, Player 2 que Joga
     {   
         const dadoP2 = document.querySelector("#dadosP2");
         let DadoP2 = valorDado();
