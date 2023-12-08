@@ -12,6 +12,24 @@ const V2 = document.querySelector("#pts2");
 Somatorios();
 Player1();
 
+function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
+    let restart = document.querySelector("#Reiniciar");
+    if (GameOver()) {
+        restart.addEventListener("click", function () {
+            Reinicia();
+            for (let i = 0; i < 3; i += 1) {
+                for (let j = 0; j < 3; j += 1) {
+                    MatP1[i * 3 + j].textContent = '';
+                    MatP2[i * 3 + j].textContent = '';
+                }
+            }
+            restart.removeEventListener("click", this);
+            Somatorios();
+            Player1();
+        })
+    }
+}
+
 function Player1() {
     if (RodadaDeQuem()) { //Se verdadeiro, player1 joga
         const dadoP1 = document.querySelector("#dadoP1");
