@@ -5,8 +5,8 @@ import { MP1PosVazia, MP2PosVazia, Reinicia, GameOver, AtribuiMatrizP1, SColuna3
 
 
 let numSelec = null; //Variável para selecionar o botão
-const MatP1 = document.querySelectorAll('button[id^=M1]'); //Selecionar todos os botões cujo id começa com "M1" e "M2"
-const MatP2 = document.querySelectorAll('button[id^=M2]');
+const MatP1 = document.querySelectorAll('#M1'); //Selecionar todos os botões cujo id começa com "M1" e "M2"
+const MatP2 = document.querySelectorAll('#M2');
 let contP1 = 0; //Contar o placar do P1
 let contP2 = 0; //Contar o placar do P2
 let emp = 0; //Contar empates
