@@ -4,9 +4,13 @@ import { MP1PosVazia, MP2PosVazia, Reinicia, GameOver, AtribuiMatrizP1, SColuna3
 //Estava tendo problemas com a importação
 
 
-let numSelec = null;
+let numSelec = null; //Variável para selecionar o botão
 const MatP1 = document.querySelectorAll('button[id^=M1]'); //Selecionar todos os botões cujo id começa com "M1" e "M2"
 const MatP2 = document.querySelectorAll('button[id^=M2]');
+let contP1 = 0; //Contar o placar do P1
+let contP2 = 0; //Contar o placar do P2
+let emp = 0; //Contar empates
+
 
 Somatorios();
 Player1();
@@ -78,10 +82,16 @@ function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
                             }
                         }
                         celSelec.textContent = GetDadoP1();
-                        Ganhador();
                         Somatorios();
-                        AlteraRodada();
-                        Player2();
+                        if (!GameOver()) {
+                            AlteraRodada();
+                            Player2();
+                        }
+                        else {
+                            Ganhador();
+                        }
+                        
+
                     }
                 }
 
@@ -123,6 +133,10 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
 
 function Somatorios() // Soma os Pontos
 {
+    const Placar1 = document.querySelector("#Placar1");
+    const Placar2 = document.querySelector("#Placar2");
+    const Empates = document.querySelector("#Empates");
+
     const V1 = document.querySelector("#pts1");
     const V2 = document.querySelector("#pts2");
 
@@ -144,6 +158,22 @@ function Somatorios() // Soma os Pontos
 
     let SomaP1 = SColuna1P1() + SColuna2P1() + SColuna3P1();
     let SomaP2 = SColuna1P2() + SColuna2P2() + SColuna3P2();
+
+    if (GameOver()) { //
+        if (SomaP1 > SomaP2) {
+            contP1 += 1;
+        }
+        else if (SomaP2 > SomaP1) {
+            contP2 += 1;
+        }
+        else {
+            emp += 1;
+        }
+    }
+
+    Placar1.textContent = contP1;
+    Placar2.textContent = contP2;
+    Empates.textContent = emp;
 
     V1.textContent = SomaP1;
     V2.textContent = SomaP2;
