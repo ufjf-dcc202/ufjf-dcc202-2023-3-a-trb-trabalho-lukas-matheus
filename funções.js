@@ -104,7 +104,10 @@ export function GameOver() { //Função para verificar se as matrizes estão che
             }
         }
     }
-    if (cont1 === 0 || cont2 === 0) {
+    if (Rodada && cont1 === 0) {
+        return true;
+    }
+    else if (!Rodada && cont2 === 0) {
         return true;
     }
     else {

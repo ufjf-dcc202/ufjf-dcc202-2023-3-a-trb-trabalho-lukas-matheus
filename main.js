@@ -15,7 +15,7 @@ function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
 
     if (GameOver()) {
         const restart = document.querySelector("#Reiniciar");
-        restart.addEventListener("click", function () {
+        const apagatudo = function () {
             Reinicia();
             for (let i = 0; i < 3; i += 1) {
                 for (let j = 0; j < 3; j += 1) {
@@ -23,10 +23,12 @@ function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
                     MatP2[i * 3 + j].textContent = '';
                 }
             }
-            restart.removeEventListener("click", this);
             Somatorios();
             Player1();
-        })
+            restart.removeEventListener("click", apagatudo);
+        }
+        restart.addEventListener("click", apagatudo);
+
     }
 }
 
@@ -36,8 +38,10 @@ function Player1() {
         SetDadoP1();
         dadoP1.textContent = GetDadoP1();
         dadoP1.classList.add("numeros");
-        dadoP1.addEventListener("click", SelecNum);
-        SelecCelP1();
+        if (!GameOver()) {
+            dadoP1.addEventListener("click", SelecNum);
+            SelecCelP1();
+        }
     }
 }
 function Player2() {
@@ -52,35 +56,40 @@ function Player2() {
 
 function SelecNum() { //Só para adicionar estilo ao clicar no botão do dado
     numSelec = this;
-    numSelec.classList.add("nselec");
+    numSelec.classList.add("nselec")
 }
 
-function SelecCelP1() { //Faz o Player1 Poder escolher uma célula
+function SelecCelP1() { //Faz o Player1 Poder escolher uma célula   
     Somatorios();
     for (let i = 0; i < 3; i += 1) {
         for (let j = 0; j < 3; j += 1) {
-            MatP1[i * 3 + j].addEventListener("click", function () { //Aqui eu uso essa expressão para passar os valores de i e j de forma linear no vetor
-                let celSelec = this;
-                if (celSelec.textContent === '' && numSelec !== null) {
-                    AtribuiMatrizP1(i, j, GetDadoP1());
-                    numSelec.classList.remove("nselec");
-                    numSelec = null;
-                    for (let i = 0; i < 3; i += 1) {
-                        for (let j = 0; j < 3; j += 1) {
-                            if (MP2PosVazia(i, j)) {
-                                MatP2[i * 3 + j].textContent = '';
+            MatP1[i * 3 + j].addEventListener("click", function () {
+                if (!GameOver()) {
+                    let celSelec = this;
+                    if (celSelec.textContent === '' && numSelec !== null) {
+                        AtribuiMatrizP1(i, j, GetDadoP1());
+                        numSelec.classList.remove("nselec");
+                        numSelec = null;
+                        for (let i = 0; i < 3; i += 1) {
+                            for (let j = 0; j < 3; j += 1) {
+                                if (MP2PosVazia(i, j)) {
+                                    MatP2[i * 3 + j].textContent = '';
+                                }
                             }
                         }
+                        celSelec.textContent = GetDadoP1();
+                        Ganhador();
+                        Somatorios();
+                        AlteraRodada();
+                        Player2();
                     }
-                    celSelec.textContent = GetDadoP1();
-                    Ganhador();
-                    Somatorios();
-                    AlteraRodada();
-                    Player2();
                 }
-            });
+
+            }); //Aqui eu uso essa expressão para passar os valores de i e j de forma linear no vetor
         }
     }
+
+
 }
 
 function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot jogar sozinho
@@ -99,10 +108,17 @@ function SelecCelP2(valor) { //Gera aleatoriamente uma posição para o Bot joga
         }
     }
     MatP2[i * 3 + j].textContent = valor;
-    Ganhador();
     Somatorios();
-    AlteraRodada();
-    Player1();
+    if (!GameOver()) {
+        AlteraRodada();
+        Player1();
+    }
+    else {
+        Ganhador();
+    }
+
+
+
 }
 
 function Somatorios() // Soma os Pontos
