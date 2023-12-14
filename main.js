@@ -17,7 +17,6 @@ Player1();
 
 function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
 
-    if (GameOver()) {
         const restart = document.querySelector("#Reiniciar");
         const apagatudo = function () {
             Reinicia();
@@ -33,7 +32,6 @@ function Ganhador() { //Função para verificar quem ganhou e resetar o jogo;
         }
         restart.addEventListener("click", apagatudo);
 
-    }
 }
 
 function Player1() {
